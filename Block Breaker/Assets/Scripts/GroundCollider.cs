@@ -5,11 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class GroundCollider : MonoBehaviour {
 
-    public LevelManager levelManager;
+    private LevelManager levelManager;
+
+    void Start()
+    {
+        levelManager = GameObject.FindObjectOfType<LevelManager>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        levelManager.LoadLevel("Win screen");
+        levelManager.LoadLevel("Lose screen");
     }
 
 

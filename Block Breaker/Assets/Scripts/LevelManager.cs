@@ -4,7 +4,10 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour {
 
-	public void LoadLevel(string name){
+    public int activeScene;
+
+
+    public void LoadLevel(string name){
 		Debug.Log ("New Level load: " + name);
 		SceneManager.LoadScene(name);
 	}
@@ -13,5 +16,11 @@ public class LevelManager : MonoBehaviour {
 		Debug.Log ("Quit requested");
 		Application.Quit ();
 	}
+
+    public void LoadNextLevel()
+    {
+        activeScene = (SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(activeScene + 1);
+    }
 
 }
